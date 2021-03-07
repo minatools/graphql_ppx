@@ -4,25 +4,25 @@ load("@obazl_rules_ocaml//ocaml:rules.bzl", "ppx_executable", "ppx_module")
 ###############
 ppx_executable(
     name = "ppx_tools_versioned.metaquot_402",
-    main = ":Driver",
+    main = ":ppxlib_driver",
     opts = [],
     visibility = [
         "//src/base:__pkg__",
         "//src/bucklescript:__pkg__",
     ],
-    deps = [
-        "@opam//pkg:ppx_tools_versioned.metaquot_402",
-        "@opam//pkg:ppxlib",
+    deps_opam = [
+        "ppx_tools_versioned.metaquot_402",
+        "ppxlib",
     ],
 )
 
 ###########
 ppx_module(
-    name = "Driver",
-    src = ":ppxlib_driver.ml",
-    opts = ["-linkall"],
+    name   = "ppxlib_driver",
+    struct = ":ppxlib_driver.ml",
+    opts   = ["-linkall"],
     visibility = ["//visibility:public"],
-    deps = ["@opam//pkg:ppxlib"],
+    deps_opam = ["ppxlib"],
 )
 
 ########

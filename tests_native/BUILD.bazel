@@ -7,10 +7,13 @@ load(
     "ppx_executable",
 )
 
-exports_files(["graphql_schema.json"])
+# exports_files(["graphql_schema.json"])
 
-GRAPHQL_SCHEMA_TARGET = ":graphql_schema.json"
-GRAPHQL_SCHEMA_FILE = "tests_native/graphql_schema.json"
+GRAPHQL_SCHEMA_FILE = "graphql_schema.json"
+## FIXME: make this work independent of workspacing
+#GRAPHQL_SCHEMA_PATH = "tests_native/" + GRAPHQL_SCHEMA_FILE
+GRAPHQL_SCHEMA_PATH = "external/graphql_ppx/tests_native/" + GRAPHQL_SCHEMA_FILE
+GRAPHQL_SCHEMA_JSON = "//tests_native:" + GRAPHQL_SCHEMA_FILE
 
 ################################################################
 ## STANZA 1: LIBRARY GRAPHQL_PPX_TEST
@@ -35,9 +38,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
         ":_Test_shared",
@@ -51,9 +54,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS,
 )
 
@@ -64,9 +67,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     ppx_print = "@ppx//print:binary",
     deps = GRAPHQL_PPX_TEST_DEPS,
 )
@@ -83,9 +86,9 @@ ocaml_module(
     ],
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     # ppx_print = "@ppx//print:binary",
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
@@ -100,9 +103,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
         ":_Test_shared",
@@ -116,9 +119,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
         ":_Test_shared",
@@ -132,9 +135,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS,
 )
 
@@ -145,9 +148,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
         ":_Test_shared",
@@ -161,9 +164,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     ppx_print = "@ppx//print:binary",
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
@@ -178,9 +181,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
         ":_Test_shared",
@@ -194,9 +197,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
         ":_Arg_named_query",
@@ -231,9 +234,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS,
 )
 
@@ -244,9 +247,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
         ":_Test_shared",
@@ -260,9 +263,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
         ":_Test_shared",
@@ -276,9 +279,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS,
 )
 
@@ -289,9 +292,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
         ":_Test_shared",
@@ -305,9 +308,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
         ":_Test_shared",
@@ -321,9 +324,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
         ":_Test_shared",
@@ -337,9 +340,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
         ":_Test_shared",
@@ -353,9 +356,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
         ":_Test_shared",
@@ -374,9 +377,9 @@ ocaml_module(
     ],
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS,
 )
 
@@ -387,9 +390,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema", GRAPHQL_SCHEMA_FILE
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     ppx_print = "@ppx//print:binary",
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
@@ -404,9 +407,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     ppx_print = "@ppx//print:binary",
     deps = GRAPHQL_PPX_TEST_DEPS,
 )
@@ -418,9 +421,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS,
 )
 
@@ -431,9 +434,9 @@ ocaml_module(
     opts = GRAPHQL_PPX_TEST_MODULE_OPTS,
     ppx = ":ppx1.exe",
     ppx_args = [
-        "-schema={}".format(GRAPHQL_SCHEMA_FILE)
+        "-schema", GRAPHQL_SCHEMA_PATH
     ],
-    ppx_data = [GRAPHQL_SCHEMA_TARGET],
+    ppx_data = [GRAPHQL_SCHEMA_JSON],
     deps = GRAPHQL_PPX_TEST_DEPS + [
         # do not sort (buildifier)
         ":_Test_shared",
