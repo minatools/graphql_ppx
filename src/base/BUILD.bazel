@@ -1,20 +1,12 @@
-## OBAZL GENERATED FILE ## To retain edits (prevent overwrite), delete this line.
-
 load(
     "@obazl_rules_ocaml//ocaml:rules.bzl",
     "ocaml_archive",
     "ocaml_library",
     "ocaml_module",
     "ocaml_ns_library",
+    "ppx_library",
+    "ppx_module",
 )
-
-# load("@obazl_rules_ocaml//ocaml:macros.bzl", "ns_env")
-# ns_env(aliases = glob(["*.ml"],
-#                       exclude = ["build_config.cppo.ml"])
-#        ## build_config.ml is generated, so it won't glob -
-#        ## we have to list it explicitly, otherwise no
-#        ## alias equation will be generated for it.
-#        + ["build_config.ml"])
 
 ################################################################
 ## STANZA 1: LIBRARY GRAPHQL_PPX_BASE
@@ -29,120 +21,47 @@ GRAPHQL_PPX_BASE_OPAM_DEPS = [
 
 GRAPHQL_PPX_BASE_PPX = "@//bzl/ppx/exe:ppx_tools_versioned.metaquot_402"
 
-GRAPHQL_PPX_BASE_PPX_ARGS = [
-    # do not sort (buildifier)
-]
+GRAPHQL_PPX_BASE_PPX_ARGS = []
 
-##############
-# ocaml_archive(
-#     name = "graphql_ppx_base",
-#     opts = [],
-#     visibility = ["//visibility:public"],
-#     deps = [
-#         # do not sort (buildifier)
-#         ":_Ast_serializer_apollo",
-#         ":_Build_config",
-#         ":_Compat",
-#         ":_Dirty_checker",
-#         ":_Generator_utils",
-#         ":_Graphql_ast",
-#         ":_Graphql_lexer",
-#         ":_Graphql_parser",
-#         ":_Graphql_parser_document",
-#         ":_Graphql_parser_value",
-#         ":_Graphql_ppx_base",
-#         ":_Graphql_printer",
-#         ":_Log",
-#         ":_Multi_visitor",
-#         ":_Option",
-#         ":_Ppx_config",
-#         ":_Read_schema",
-#         ":_Result_decoder",
-#         ":_Result_ext",
-#         ":_Result_structure",
-#         ":_Rule_known_argument_names",
-#         ":_Rule_no_unused_variables",
-#         ":_Schema",
-#         ":_Source_pos",
-#         ":_Traversal_utils",
-#         ":_Type_utils",
-#         ":_Validations",
-#     ],
-# )
-
-#########
-# ocaml_ns_library(
-ocaml_library(
+############
+ppx_library(
     name = "graphql_ppx_base",
     visibility = ["//visibility:public"],
-    # submodules = {
-    modules = {
-        ":_Ast_serializer_apollo": "Ast_serializer_apollo",
-        ":_Build_config": "Build_config",
-        ":_Compat": "Compat",
-        ":_Dirty_checker": "Dirty_checker",
-        ":_Generator_utils": "Generator_utils",
-        ":_Graphql_ast": "Graphql_ast",
-        ":_Graphql_lexer": "Graphql_lexer",
-        ":_Graphql_parser": "Graphql_parser",
-        ":_Graphql_parser_document": "Graphql_parser_document",
-        ":_Graphql_parser_value": "Graphql_parser_value",
-        ":_Graphql_ppx_base": "Graphql_ppx_base",
-        ":_Graphql_printer": "Graphql_printer",
-        ":_Log": "Log",
-        ":_Multi_visitor": "Multi_visitor",
-        ":_Option": "Option",
-        ":_Ppx_config": "Ppx_config",
-        ":_Read_schema": "Read_schema",
-        ":_Result_decoder": "Result_decoder",
-        ":_Result_ext": "Result_ext",
-        ":_Result_structure": "Result_structure",
-        ":_Rule_known_argument_names": "Rule_known_argument_names",
-        ":_Rule_no_unused_variables": "Rule_no_unused_variables",
-        ":_Schema": "Schema",
-        ":_Source_pos": "Source_pos",
-        ":_Traversal_utils": "Traversal_utils",
-        ":_Type_utils": "Type_utils",
-        ":_Validations": "Validations",
-    },
-
-    # submodules = [
-    #     # do not sort (buildifier)
-    #     "ast_serializer_apollo.ml",
-    #     "build_config.ml",
-    #     "compat.ml",
-    #     "dirty_checker.ml",
-    #     "generator_utils.ml",
-    #     "graphql_ast.ml",
-    #     "graphql_lexer.ml",
-    #     "graphql_parser.ml",
-    #     "graphql_parser_document.ml",
-    #     "graphql_parser_value.ml",
-    #     "graphql_ppx_base.ml",
-    #     "graphql_printer.ml",
-    #     "log.ml",
-    #     "multi_visitor.ml",
-    #     "option.ml",
-    #     "ppx_config.ml",
-    #     "read_schema.ml",
-    #     "result_decoder.ml",
-    #     "result_ext.ml",
-    #     "result_structure.ml",
-    #     "rule_known_argument_names.ml",
-    #     "rule_no_unused_variables.ml",
-    #     "schema.ml",
-    #     "source_pos.ml",
-    #     "traversal_utils.ml",
-    #     "type_utils.ml",
-    #     "validations.ml",
-    # ],
+    modules = [
+        ":_Ast_serializer_apollo",
+        ":_Build_config",
+        ":_Compat",
+        ":_Dirty_checker",
+        ":_Generator_utils",
+        ":_Graphql_ast",
+        ":_Graphql_lexer",
+        ":_Graphql_parser",
+        ":_Graphql_parser_document",
+        ":_Graphql_parser_value",
+        ":_Graphql_ppx_base",
+        ":_Graphql_printer",
+        ":_Log",
+        ":_Multi_visitor",
+        ":_Option",
+        ":_Ppx_config",
+        ":_Read_schema",
+        ":_Result_decoder",
+        ":_Result_ext",
+        ":_Result_structure",
+        ":_Rule_known_argument_names",
+        ":_Rule_no_unused_variables",
+        ":_Schema",
+        ":_Source_pos",
+        ":_Traversal_utils",
+        ":_Type_utils",
+        ":_Validations"
+    ],
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Ast_serializer_apollo",
     struct = "ast_serializer_apollo.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -155,21 +74,19 @@ ocaml_module(
 )
 
 #############
-# ocaml_module(
+# ppx_module(
 #     name = "_Build_config.cppo",
 #     struct = "build_config.cppo.ml",
-#     ## ns_env = ":_ns_env",
-#     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
+# #     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
 #     ppx = GRAPHQL_PPX_BASE_PPX,
 #     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
 #     deps = GRAPHQL_PPX_BASE_DEPS,
 # )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Compat",
     struct = "compat.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -178,10 +95,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Dirty_checker",
     struct = "dirty_checker.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -193,10 +109,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Generator_utils",
     struct = "generator_utils.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -212,10 +127,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Graphql_ast",
     struct = "graphql_ast.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -227,10 +141,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Graphql_lexer",
     struct = "graphql_lexer.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -242,10 +155,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Graphql_parser",
     struct = "graphql_parser.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -259,10 +171,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Graphql_parser_document",
     struct = "graphql_parser_document.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -279,10 +190,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Graphql_parser_value",
     struct = "graphql_parser_value.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -298,10 +208,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Graphql_ppx_base",
     struct = "graphql_ppx_base.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -331,10 +240,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Graphql_printer",
     struct = "graphql_printer.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -350,10 +258,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Log",
     struct = "log.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -365,10 +272,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Multi_visitor",
     struct = "multi_visitor.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -380,10 +286,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Option",
     struct = "option.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -391,10 +296,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Ppx_config",
     struct = "ppx_config.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -407,10 +311,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Read_schema",
     struct = "read_schema.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -425,10 +328,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Result_decoder",
     struct = "result_decoder.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -446,10 +348,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Result_ext",
     struct = "result_ext.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -457,10 +358,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Result_structure",
     struct = "result_structure.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -474,10 +374,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Rule_known_argument_names",
     struct = "rule_known_argument_names.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -493,10 +392,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Rule_no_unused_variables",
     struct = "rule_no_unused_variables.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -510,10 +408,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Schema",
     struct = "schema.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -521,10 +418,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Source_pos",
     struct = "source_pos.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -532,10 +428,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Traversal_utils",
     struct = "traversal_utils.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -552,10 +447,9 @@ ocaml_module(
 )
 
 #############
-ocaml_module(
+ppx_module(
     name = "_Type_utils",
     struct = "type_utils.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -568,11 +462,10 @@ ocaml_module(
     deps_opam = GRAPHQL_PPX_BASE_OPAM_DEPS
 )
 
-#############
-ocaml_module(
+###########
+ppx_module(
     name = "_Validations",
     struct = "validations.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
@@ -586,26 +479,10 @@ ocaml_module(
     deps_opam = GRAPHQL_PPX_BASE_OPAM_DEPS
 )
 
-################################################################
-## STANZA 2: RULE
-################################################################
-## targets: (build_config.ml)
-## deps:    (:first-dep build_config.cppo.ml)
-## action:  (chdir {:dollar "ROOT"} run {:var {:fn bin, :arg cppo}} {:flag "V"} {:arg "OCAML:ocaml_version"} {:var "first-dep"} {:flag "o"} {:var "targets"})
-# genrule(
-#     name = "",
-#     srcs = "",
-#     outs = "(build_config.ml)",
-#     cmd = "\n".join([
-#     ]),
-#     visibility = ["//visibility:public"],
-# )
-
 #############
-ocaml_module(
+ppx_module(
     name = "_Build_config",
     struct = ":build_config.ml",
-    ## ns_env = ":_ns_env",
     opts = GRAPHQL_PPX_BASE_MODULE_OPTS,
     ppx = GRAPHQL_PPX_BASE_PPX,
     ppx_args = GRAPHQL_PPX_BASE_PPX_ARGS,
